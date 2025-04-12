@@ -80,7 +80,7 @@ export default function Register() {
             >
               <FieldHelperText fontSize="1rem" p="1rem 0">
                 Já possui conta?{" "}
-                <Link href="/register">
+                <Link href="/login">
                   <Highlight query="Entrar" styles={{ color: "#4affb4" }}>
                     Entrar
                   </Highlight>
