@@ -34,7 +34,7 @@ export default function Register() {
                 Seja Bem Vindo ao StreetWear!
               </FieldsetLegend>
               <FieldHelperText fontSize="0.9rem">
-                Faça seu login:
+                Faça seu registro:
               </FieldHelperText>
             </Field.Root>
           </Stack>
