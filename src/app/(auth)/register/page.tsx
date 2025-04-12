@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
-export default function Login() {
+export default function Register() {
   return (
     <Provider>
       <Center h="100vh" as="div">
@@ -61,6 +61,14 @@ export default function Login() {
               placeholder="Digite sua senha"
             />
           </Field.Root>
+          <Field.Root>
+            <Field.Label>Confirme sua senha:</Field.Label>
+            <PasswordInput
+              type="text"
+              variant="subtle"
+              placeholder="Digite novamente sua senha"
+            />
+          </Field.Root>
           <Button mt="3rem" borderRadius="20px">
             Entrar
           </Button>
@@ -71,10 +79,10 @@ export default function Login() {
               justifyContent="space-between"
             >
               <FieldHelperText fontSize="1rem" p="1rem 0">
-                Não possui uma conta?{" "}
+                Já possui conta?{" "}
                 <Link href="/register">
-                  <Highlight query="Cadastre-se" styles={{ color: "#4affb4" }}>
-                    Cadastre-se
+                  <Highlight query="Entrar" styles={{ color: "#4affb4" }}>
+                    Entrar
                   </Highlight>
                 </Link>
               </FieldHelperText>
