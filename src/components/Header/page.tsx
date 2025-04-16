@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Flex, Heading, Image, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
 
@@ -11,9 +11,12 @@ const Header = () => {
         flexDir="row"
         justifyContent="space-between"
         p="1rem"
-        boxShadow=" rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+        _light={{ boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
+        _dark={{ boxShadow: " rgba(255, 255, 255, 0.030) 0px 3px 8px" }}
       >
-        <Image />
+        <Heading fontFamily="initial" fontSize="2rem" alignContent="center">
+          SW
+        </Heading>
         <Box
           as="ul"
           display="flex"
