@@ -15,11 +15,31 @@ import {
   Highlight,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LoginUserData } from "@/types/auth";
+import { loginSchema } from "@/schemas/auth.shema";
 
 export default function Login() {
+  const { loginUser } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const submitForm = (data: LoginUserData) => {
+    loginUser(data);
+  };
+  console.log(errors);
+
   return (
     <Provider>
-      <Center h="100vh" as="div">
+      <Center h="100vh" as="form" onSubmit={handleSubmit(submitForm)}>
         <Fieldset.Root
           boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
           border="1px solid #fff"
@@ -38,30 +58,16 @@ export default function Login() {
               </FieldHelperText>
             </Field.Root>
           </Stack>
-          {/*  */}
-          <Field.Root>
-            <Field.Label>Nome:</Field.Label>
-            <Input type="name" variant="subtle" placeholder="Digite seu nome" />
-          </Field.Root>
-          {/*  */}
           <Field.Root>
             <Field.Label>Email:</Field.Label>
-            <Input
-              type="email"
-              variant="subtle"
-              placeholder="Digite seu email"
-            />
+            <Input {...register("email")} />
           </Field.Root>
           {/*  */}
           <Field.Root>
             <Field.Label>Senha:</Field.Label>
-            <PasswordInput
-              type="text"
-              variant="subtle"
-              placeholder="Digite sua senha"
-            />
+            <PasswordInput {...register("password")} />
           </Field.Root>
-          <Button mt="3rem" borderRadius="20px">
+          <Button mt="3rem" borderRadius="20px" type="submit">
             Entrar
           </Button>
           <Field.Root>
@@ -73,7 +79,10 @@ export default function Login() {
               <FieldHelperText fontSize="1rem" p="1rem 0">
                 Não possui uma conta?{" "}
                 <Link href="/register">
-                  <Highlight query="Cadastre-se" styles={{ color: "#4affb4" }}>
+                  <Highlight
+                    query="Cadastre-se"
+                    styles={{ color: "green.300" }}
+                  >
                     Cadastre-se
                   </Highlight>
                 </Link>
