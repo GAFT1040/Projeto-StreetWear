@@ -15,11 +15,31 @@ import {
   Highlight,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LoginUserData } from "@/types/auth";
+import { loginSchema } from "@/schemas/auth.shema";
 
 export default function Login() {
+  const { loginUser } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const submitForm = (data: LoginUserData) => {
+    loginUser(data);
+  };
+  console.log(errors);
+
   return (
     <Provider>
-      <Center h="100vh" as="div">
+      <Center h="100vh" as="form" onSubmit={handleSubmit(submitForm)}>
         <Fieldset.Root
           boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
           border="1px solid #fff"
@@ -27,41 +47,77 @@ export default function Login() {
           h="auto"
           p="1rem"
           borderRadius="20px"
+          _light={{
+            backgroundColor: "orange.100",
+            borderColor: "blue.400",
+            color: "blue.400",
+          }}
+          _dark={{
+            color: "orange.100",
+            backgroundColor: "blue.400",
+            borderColor: "orange.100",
+          }}
         >
           <Stack>
             <Field.Root>
-              <FieldsetLegend fontSize="1.3rem">
+              <FieldsetLegend
+                fontSize="1.3rem"
+                _light={{ color: "blue.400" }}
+                _dark={{
+                  color: "orange.100",
+                }}
+              >
                 Seja Bem Vindo ao StreetWear!
               </FieldsetLegend>
-              <FieldHelperText fontSize="0.9rem">
+              <FieldHelperText
+                fontSize="0.9rem"
+                _light={{ color: "blue.400" }}
+                _dark={{
+                  color: "orange.100",
+                }}
+              >
                 Faça seu login:
               </FieldHelperText>
             </Field.Root>
           </Stack>
-          {/*  */}
-          <Field.Root>
-            <Field.Label>Nome:</Field.Label>
-            <Input type="name" variant="subtle" placeholder="Digite seu nome" />
-          </Field.Root>
-          {/*  */}
           <Field.Root>
             <Field.Label>Email:</Field.Label>
             <Input
-              type="email"
-              variant="subtle"
+              {...register("email")}
+              variant="flushed"
               placeholder="Digite seu email"
+              _light={{
+                color: "blue.400",
+                backgroundColor: "orange.100",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
             />
           </Field.Root>
           {/*  */}
           <Field.Root>
             <Field.Label>Senha:</Field.Label>
             <PasswordInput
-              type="text"
-              variant="subtle"
+              {...register("password")}
+              variant="flushed"
               placeholder="Digite sua senha"
+              _light={{
+                color: "blue.400",
+                backgroundColor: "orange.100",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
             />
           </Field.Root>
-          <Button mt="3rem" borderRadius="20px">
+          <Button mt="3rem" borderRadius="20px" type="submit">
             Entrar
           </Button>
           <Field.Root>
@@ -70,10 +126,18 @@ export default function Login() {
               flexDir="row"
               justifyContent="space-between"
             >
-              <FieldHelperText fontSize="1rem" p="1rem 0">
+              <FieldHelperText
+                fontSize="1rem"
+                p="1rem 0"
+                _light={{ color: "blue.400" }}
+                _dark={{ color: "orange.100" }}
+              >
                 Não possui uma conta?{" "}
                 <Link href="/register">
-                  <Highlight query="Cadastre-se" styles={{ color: "#4affb4" }}>
+                  <Highlight
+                    query="Cadastre-se"
+                    styles={{ color: "yellow.500" }}
+                  >
                     Cadastre-se
                   </Highlight>
                 </Link>
