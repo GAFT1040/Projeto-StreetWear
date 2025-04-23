@@ -22,7 +22,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.setItem("@token", JSON.stringify(response.accessToken));
       router.push("/login");
     } catch (error: any) {
-      console.log(error);
+      console.log(error.response);
 
       toast.error(error.response.data);
     }

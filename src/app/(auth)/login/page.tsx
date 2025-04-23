@@ -47,25 +47,75 @@ export default function Login() {
           h="auto"
           p="1rem"
           borderRadius="20px"
+          _light={{
+            backgroundColor: "orange.100",
+            borderColor: "blue.400",
+            color: "blue.400",
+          }}
+          _dark={{
+            color: "orange.100",
+            backgroundColor: "blue.400",
+            borderColor: "orange.100",
+          }}
         >
           <Stack>
             <Field.Root>
-              <FieldsetLegend fontSize="1.3rem">
+              <FieldsetLegend
+                fontSize="1.3rem"
+                _light={{ color: "blue.400" }}
+                _dark={{
+                  color: "orange.100",
+                }}
+              >
                 Seja Bem Vindo ao StreetWear!
               </FieldsetLegend>
-              <FieldHelperText fontSize="0.9rem">
+              <FieldHelperText
+                fontSize="0.9rem"
+                _light={{ color: "blue.400" }}
+                _dark={{
+                  color: "orange.100",
+                }}
+              >
                 Faça seu login:
               </FieldHelperText>
             </Field.Root>
           </Stack>
           <Field.Root>
             <Field.Label>Email:</Field.Label>
-            <Input {...register("email")} />
+            <Input
+              {...register("email")}
+              variant="flushed"
+              placeholder="Digite seu email"
+              _light={{
+                color: "blue.400",
+                backgroundColor: "orange.100",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
+            />
           </Field.Root>
           {/*  */}
           <Field.Root>
             <Field.Label>Senha:</Field.Label>
-            <PasswordInput {...register("password")} />
+            <PasswordInput
+              {...register("password")}
+              variant="flushed"
+              placeholder="Digite sua senha"
+              _light={{
+                color: "blue.400",
+                backgroundColor: "orange.100",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
+            />
           </Field.Root>
           <Button mt="3rem" borderRadius="20px" type="submit">
             Entrar
@@ -76,12 +126,17 @@ export default function Login() {
               flexDir="row"
               justifyContent="space-between"
             >
-              <FieldHelperText fontSize="1rem" p="1rem 0">
+              <FieldHelperText
+                fontSize="1rem"
+                p="1rem 0"
+                _light={{ color: "blue.400" }}
+                _dark={{ color: "orange.100" }}
+              >
                 Não possui uma conta?{" "}
                 <Link href="/register">
                   <Highlight
                     query="Cadastre-se"
-                    styles={{ color: "green.300" }}
+                    styles={{ color: "yellow.500" }}
                   >
                     Cadastre-se
                   </Highlight>

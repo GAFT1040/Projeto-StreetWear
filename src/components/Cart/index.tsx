@@ -28,7 +28,9 @@ const Demo = () => {
               <IconButton>
                 <FiTrash />
               </IconButton>
-              <Button backgroundColor="green.300">Finalizar Compra</Button>
+              <Button backgroundColor="blue.100" color="blue.800">
+                Finalizar Compra
+              </Button>
             </Drawer.Footer>
             <Drawer.CloseTrigger asChild>
               <CloseButton size="sm" />

@@ -15,6 +15,8 @@ import {
   Button,
   Highlight,
   Text,
+  Flex,
+  Separator,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -51,13 +53,35 @@ export default function Register() {
           h="auto"
           p="1rem"
           borderRadius="20px"
+          _light={{
+            backgroundColor: "orange.100",
+            borderColor: "blue.400",
+            color: "blue.400",
+          }}
+          _dark={{
+            color: "orange.100",
+            backgroundColor: "blue.400",
+            borderColor: "orange.100",
+          }}
         >
           <Stack>
             <Field.Root>
-              <FieldsetLegend fontSize="1.3rem">
-                Seja Bem Vindo ao StreetWear!
+              <FieldsetLegend
+                fontSize="1.3rem"
+                _light={{ color: "blue.400" }}
+                _dark={{
+                  color: "orange.100",
+                }}
+              >
+                Bem Vindo ao StreetWear
               </FieldsetLegend>
-              <FieldHelperText fontSize="0.9rem">
+              <FieldHelperText
+                fontSize="0.9rem"
+                _light={{ color: "blue.400" }}
+                _dark={{
+                  color: "orange.100",
+                }}
+              >
                 Faça seu registro:
               </FieldHelperText>
             </Field.Root>
@@ -67,8 +91,18 @@ export default function Register() {
             <Field.Label>Nome:</Field.Label>
             <Input
               {...register("name")}
-              variant="subtle"
+              variant="flushed"
               placeholder="Digite seu nome"
+              _light={{
+                color: "blue.400",
+                backgroundColor: "orange.100",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
             />
             <Text color="red.500" fontSize="14px">
               {" "}
@@ -80,8 +114,18 @@ export default function Register() {
             <Field.Label>Email:</Field.Label>
             <Input
               {...register("email")}
-              variant="subtle"
+              variant="flushed"
               placeholder="Digite seu email"
+              _light={{
+                color: "blue.400",
+                backgroundColor: "orange.100",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
             />
             <Text color="red.500" fontSize="14px">
               {" "}
@@ -93,8 +137,18 @@ export default function Register() {
             <Field.Label>Senha:</Field.Label>
             <PasswordInput
               {...register("password")}
-              variant="subtle"
+              variant="flushed"
               placeholder="Digite sua senha"
+              _light={{
+                color: "blue.400",
+                backgroundColor: "orange.100",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
             />
             <Text color="red.500" fontSize="14px">
               {" "}
@@ -105,8 +159,17 @@ export default function Register() {
             <Field.Label>Confirme sua senha:</Field.Label>
             <PasswordInput
               {...register("confirmPassword")}
-              variant="subtle"
+              variant="flushed"
               placeholder="Digite novamente sua senha"
+              _light={{
+                color: "blue.400",
+                borderColor: "blue.400",
+              }}
+              _dark={{
+                color: "orange.100",
+                backgroundColor: "blue.400",
+                borderColor: "orange.100",
+              }}
             />
             <Text color="red.500" fontSize="14px">
               {" "}
@@ -122,10 +185,15 @@ export default function Register() {
               flexDir="row"
               justifyContent="space-between"
             >
-              <FieldHelperText fontSize="1rem" p="1rem 0">
+              <FieldHelperText
+                fontSize="1rem"
+                p="1rem 0"
+                _light={{ color: "blue.400" }}
+                _dark={{ color: "orange.100" }}
+              >
                 Já possui conta?{" "}
                 <Link href="/login">
-                  <Highlight query="Entrar" styles={{ color: "green.300" }}>
+                  <Highlight query="Entrar" styles={{ color: "yellow.500" }}>
                     Entrar
                   </Highlight>
                 </Link>
