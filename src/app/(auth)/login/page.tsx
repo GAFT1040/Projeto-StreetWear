@@ -13,6 +13,7 @@ import {
   Fieldset,
   Button,
   Highlight,
+  Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
@@ -97,6 +98,10 @@ export default function Login() {
                 borderColor: "orange.100",
               }}
             />
+            <Text color="red.500" fontSize="14px">
+              {" "}
+              {errors.email?.message}{" "}
+            </Text>
           </Field.Root>
           {/*  */}
           <Field.Root>
@@ -116,6 +121,10 @@ export default function Login() {
                 borderColor: "orange.100",
               }}
             />
+            <Text color="red.500" fontSize="14px">
+              {" "}
+              {errors.password?.message}{" "}
+            </Text>
           </Field.Root>
           <Button mt="3rem" borderRadius="20px" type="submit">
             Entrar
