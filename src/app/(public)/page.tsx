@@ -52,6 +52,7 @@ export default function Home() {
       <Heading fontSize="2rem" fontFamily="Arial" p="2rem" color="blue.400">
         Destaques
       </Heading>
+      
     </Provider>
   );
 }
