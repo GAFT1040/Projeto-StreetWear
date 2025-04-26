@@ -1,7 +1,8 @@
-import { Button, Menu, Portal } from "@chakra-ui/react";
+import { Button, Menu, MenuSeparator, Portal } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import { LuChevronRight } from "react-icons/lu";
+import AuthButtonsMenu from "../MenuSing";
 
 const Demo = () => {
   return (
@@ -14,8 +15,8 @@ const Demo = () => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.Item value="new-txt">Shop</Menu.Item>
-            <Menu.Item value="new-file">Desconto</Menu.Item>
+            <Menu.Item value="Shop">Shop</Menu.Item>
+            <Menu.Item value="DEsconto">Destaques</Menu.Item>
             <Menu.Root positioning={{ placement: "right-start", gutter: 2 }}>
               <Menu.TriggerItem>
                 Peças <LuChevronRight />
@@ -23,14 +24,15 @@ const Demo = () => {
               <Portal>
                 <Menu.Positioner>
                   <Menu.Content>
-                    <Menu.Item value="panda">Camisas</Menu.Item>
-                    <Menu.Item value="ark">Calças</Menu.Item>
-                    <Menu.Item value="chakra">Tênis</Menu.Item>
+                    <Menu.Item value="Camisas">Camisas</Menu.Item>
+                    <Menu.Item value="Calças">Calças</Menu.Item>
+                    <Menu.Item value="Tênis">Tênis</Menu.Item>
                   </Menu.Content>
                 </Menu.Positioner>
               </Portal>
             </Menu.Root>
-            <Menu.Item value="open-file">Sobre nós</Menu.Item>
+            <Menu.Item value="Sobre-nós">Sobre nós</Menu.Item>
+            <AuthButtonsMenu />
           </Menu.Content>
         </Menu.Positioner>
       </Portal>

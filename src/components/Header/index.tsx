@@ -70,7 +70,7 @@ const Header = () => {
               _hover={{ backgroundColor: "blue.400", color: "orange.100" }}
               color="blue.400"
             >
-              Descontos
+              Destaques
             </Link>
           </li>
         </Box>

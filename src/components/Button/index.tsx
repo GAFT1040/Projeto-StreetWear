@@ -38,7 +38,8 @@ export default function AuthButtons() {
           <Input
             placeholder="Buscando por algo?"
             borderColor="blue.400"
-            _light={{ backgroundColor: "blue.200", color: "black" }}
+            variant="flushed"
+            _light={{ color: "black" }}
             _dark={{ color: "white" }}
           />
         </InputGroup>

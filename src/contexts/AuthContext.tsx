@@ -19,7 +19,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const registerUser = async (data: RegisterUserData) => {
     try {
       const response = await registerUserService(data);
-      localStorage.setItem("@token", JSON.stringify(response.accessToken));
       router.push("/login");
     } catch (error: any) {
       console.log(error.response);
@@ -32,6 +31,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const response = await loginUserService(data);
       router.push("/");
+      localStorage.setItem("@token", JSON.stringify(response.accessToken));
       toast.success("Login bem sucedido!");
     } catch (error: any) {
       toast.error(error.response.data);
