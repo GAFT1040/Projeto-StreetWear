@@ -16,7 +16,7 @@ const Demo = () => {
         <Menu.Positioner>
           <Menu.Content>
             <Menu.Item value="Shop">Shop</Menu.Item>
-            <Menu.Item value="DEsconto">Desconto</Menu.Item>
+            <Menu.Item value="DEsconto">Destaques</Menu.Item>
             <Menu.Root positioning={{ placement: "right-start", gutter: 2 }}>
               <Menu.TriggerItem>
                 Peças <LuChevronRight />
