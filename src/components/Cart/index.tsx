@@ -11,8 +11,15 @@ import { FiTrash } from "react-icons/fi";
 const Demo = () => {
   return (
     <Drawer.Root>
-      <Drawer.Trigger asChild position="fixed" bottom={0} right={0} m="2rem">
-        <IconButton variant="outline" borderRadius="100%">
+      <Drawer.Trigger
+        asChild
+        position="fixed"
+        bottom={0}
+        right={5}
+        m="2rem"
+        borderColor="blue.400"
+      >
+        <IconButton variant="outline" borderRadius="100%" color="blue.400">
           <FaShoppingCart />
         </IconButton>
       </Drawer.Trigger>

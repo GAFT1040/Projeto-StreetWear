@@ -1,6 +1,7 @@
 "use client";
 
 import Demo from "@/components/Cart";
+import ProductsCard from "@/components/ProductsArea";
 import { Provider } from "@/components/ui/provider";
 import { getProductsService } from "@/services/get.products";
 import { Product } from "@/types/products";
@@ -17,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchProducts();
-  });
+  }, []);
 
   return (
     <Provider>
@@ -62,11 +63,23 @@ export default function Home() {
           />
         </li>
       </Box>
-      <Box>
-        <Heading fontSize="2rem" fontFamily="Arial" p="2rem" color="blue.400">
+      <Box backgroundColor="gray.950" m="2rem" borderRadius="30px">
+        <Heading
+          fontSize="2rem"
+          fontFamily="Arial"
+          p="2rem"
+          color="white"
+          id="shop"
+        >
           StreetWear Shop
         </Heading>
-        {/* -------- */}
+        <Box p="2rem">
+          <Grid gridTemplateColumns="repeat(3, 1fr)" gap={2}>
+            {products?.map((product, index) => (
+              <ProductsCard key={product.id} {...product} />
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </Provider>
   );

@@ -4,10 +4,13 @@ import {
   LoginUserData,
   RegisterUserData,
 } from "@/types/auth";
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { loginUserService, registerUserService } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { User } from "@/types/usuarios";
+import { getUser } from "@/services/get.users";
+import api from "@/services/api";
 
 const AuthContext = createContext<AuthContextInterface>(
   {} as AuthContextInterface
