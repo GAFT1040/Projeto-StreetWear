@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Link,
-  MenuContent,
-  MenuItem,
-  MenuSeparator,
-  Span,
-} from "@chakra-ui/react";
+import { Link, MenuContent, MenuItem, Span } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 export default function AuthButtonsMenu() {

@@ -1,5 +1,6 @@
 "use client";
 import api from "@/services/api";
+import { FaRegUser } from "react-icons/fa";
 import { getUser } from "@/services/get.users";
 import { User } from "@/types/usuarios";
 import { useEffect, useState } from "react";
@@ -12,6 +13,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { useRef } from "react";
+import { PasswordInput } from "../ui/password-input";
 
 const Perfil = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -30,7 +32,6 @@ const Perfil = () => {
       if (userId) {
         const response = await getUser(Number(JSON.parse(userId)));
         setUser(response);
-        console.log(response.name);
       }
     };
 
@@ -39,11 +40,20 @@ const Perfil = () => {
 
   const ref = useRef<HTMLInputElement>(null);
 
+  if (user === null) {
+    return <p>carregando</p>;
+  }
+
   return (
     <Drawer.Root initialFocusEl={() => ref.current}>
       <Drawer.Trigger asChild>
-        <Button variant="outline" size="sm">
-          Open Drawer
+        <Button
+          variant="outline"
+          size="sm"
+          border="transparent"
+          background="transparent"
+        >
+          <FaRegUser />
         </Button>
       </Drawer.Trigger>
       <Portal>
@@ -51,16 +61,14 @@ const Perfil = () => {
         <Drawer.Positioner>
           <Drawer.Content>
             <Drawer.Header>
-              <Drawer.Title>Drawer Title</Drawer.Title>
+              <Drawer.Title>Perfil do Usuário</Drawer.Title>
             </Drawer.Header>
             <Drawer.Body>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
               <Stack mt="5">
-                <Input defaultValue="Naruto" placeholder="First name" />
-                <Input ref={ref} placeholder="Email" />
+                <p>Nome</p>
+                <Input ref={ref} placeholder={user.name} />
+                <p>Email</p>
+                <Input defaultValue={user.email} placeholder={user.email} />
               </Stack>
             </Drawer.Body>
             <Drawer.Footer>
@@ -77,4 +85,4 @@ const Perfil = () => {
   );
 };
 
-export default Perfil();
+export default Perfil;

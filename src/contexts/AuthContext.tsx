@@ -8,9 +8,6 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { loginUserService, registerUserService } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { User } from "@/types/usuarios";
-import { getUser } from "@/services/get.users";
-import api from "@/services/api";
 
 const AuthContext = createContext<AuthContextInterface>(
   {} as AuthContextInterface
@@ -35,6 +32,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const response = await loginUserService(data);
       router.push("/");
       localStorage.setItem("@token", JSON.stringify(response.accessToken));
+      localStorage.setItem("@userId", JSON.stringify(response.user.id));
+
       toast.success("Login bem sucedido!");
     } catch (error: any) {
       toast.error(error.response.data);

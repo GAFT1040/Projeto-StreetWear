@@ -3,6 +3,7 @@ import { IconButton } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import { LuChevronRight } from "react-icons/lu";
 import AuthButtonsMenu from "../MenuSing";
+import Cart from "../Cart";
 
 const Demo = () => {
   return (
@@ -32,6 +33,10 @@ const Demo = () => {
               </Portal>
             </Menu.Root>
             <Menu.Item value="Sobre-nós">Sobre nós</Menu.Item>
+            <Menu.Item value="Cart">
+              {" "}
+              <Cart />{" "}
+            </Menu.Item>
             <AuthButtonsMenu />
           </Menu.Content>
         </Menu.Positioner>

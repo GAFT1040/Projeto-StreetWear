@@ -1,6 +1,6 @@
 "use client";
 
-import Demo from "@/components/Cart";
+import Cart from "@/components/Cart";
 import ProductsCard from "@/components/ProductsArea";
 import { Provider } from "@/components/ui/provider";
 import { getProductsService } from "@/services/get.products";
@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <Provider>
-      <Demo />
+      <Cart />
       <Center
         style={{
           backgroundImage: `url(/roupasHome.png)`,
@@ -74,7 +74,17 @@ export default function Home() {
           StreetWear Shop
         </Heading>
         <Box p="2rem">
-          <Grid gridTemplateColumns="repeat(3, 1fr)" gap={2}>
+          <Grid
+            p={{ base: "0", xl: "0 5rem 0 5rem" }}
+            gridTemplateColumns={{
+              base: "repeat(1, 1fr)",
+
+              md: "repeat(2, 1fr)",
+
+              xl: "repeat(3, 1fr)",
+            }}
+            gap="7rem"
+          >
             {products?.map((product, index) => (
               <ProductsCard key={product.id} {...product} />
             ))}

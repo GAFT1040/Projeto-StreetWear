@@ -8,7 +8,7 @@ import {
 import { FaShoppingCart } from "react-icons/fa";
 import { FiTrash } from "react-icons/fi";
 
-const Demo = () => {
+const Cart = () => {
   return (
     <Drawer.Root>
       <Drawer.Trigger
@@ -17,9 +17,14 @@ const Demo = () => {
         bottom={0}
         right={5}
         m="2rem"
-        borderColor="blue.400"
+        zIndex={6}
       >
-        <IconButton variant="outline" borderRadius="100%" color="blue.400">
+        <IconButton
+          variant="outline"
+          borderRadius="100%"
+          backgroundColor="blue.400"
+          borderColor="blue.400"
+        >
           <FaShoppingCart />
         </IconButton>
       </Drawer.Trigger>
@@ -49,4 +54,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default Cart;

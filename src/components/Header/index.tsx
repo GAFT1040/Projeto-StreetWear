@@ -45,6 +45,7 @@ const Header = () => {
                 backgroundColor: "blue.400",
                 color: "orange.100",
               }}
+              display={{ base: "none", md: "flex" }}
               color="blue.400"
             >
               Shop
@@ -96,7 +97,7 @@ const Header = () => {
             color="blue.400"
           />
           <Box
-            display={{ base: "flex", sm: "none" }}
+            display={{ base: "flex", md: "none" }}
             justifyContent="center"
             alignItems="center"
           >

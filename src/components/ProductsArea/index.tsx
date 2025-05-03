@@ -11,7 +11,13 @@ const ProductsCard: React.FC<Product> = ({
 }) => {
   return (
     <DarkMode>
-      <Card.Root maxW="sm" overflow="hidden" mb="2rem" borderRadius="30px">
+      <Card.Root
+        overflow="hidden"
+        mb="2rem"
+        borderRadius="30px"
+        transition="all 1s"
+        _hover={{ transform: "scale(1.1)" }}
+      >
         <Image src={link} alt={name} w="auto" h="400px" />
         <Card.Body gap="2">
           <Card.Title>{name}</Card.Title>
@@ -29,11 +35,21 @@ const ProductsCard: React.FC<Product> = ({
             })}
           </Text>
         </Card.Body>
-        <Card.Footer gap="2">
-          <Button variant="solid" backgroundColor="blue.400">
+        <Card.Footer gap="2" flexDir="column" display="flex" alignItems="start">
+          <Button
+            variant="solid"
+            backgroundColor="blue.400"
+            borderRadius="10px"
+            w="100%"
+          >
             Comprea Agora
           </Button>
-          <Button variant="ghost" border="2px solid gray" borderRadius="10px">
+          <Button
+            variant="ghost"
+            border="2px solid gray"
+            borderRadius="10px"
+            w="100%"
+          >
             Adicionar ao Carrinho
           </Button>
         </Card.Footer>
