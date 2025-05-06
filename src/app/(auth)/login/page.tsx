@@ -40,7 +40,16 @@ export default function Login() {
 
   return (
     <Provider>
-      <Center h="100vh" as="form" onSubmit={handleSubmit(submitForm)}>
+      <Center
+        h="100vh"
+        as="form"
+        style={{
+          backgroundImage: `url(/temasing.png)`,
+          backgroundSize: "100%",
+          backgroundPosition: "center bottom",
+        }}
+        onSubmit={handleSubmit(submitForm)}
+      >
         <Fieldset.Root
           boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
           border="1px solid #fff"
@@ -48,37 +57,21 @@ export default function Login() {
           h="auto"
           p="1rem"
           borderRadius="20px"
-          _light={{
-            backgroundColor: "orange.100",
-            borderColor: "blue.400",
-            color: "blue.400",
-          }}
-          _dark={{
-            color: "orange.100",
-            backgroundColor: "blue.400",
-            borderColor: "orange.100",
-          }}
+          color="orange.100"
+          backgroundColor="blue.400"
+          borderColor="orange.100"
         >
           <Stack>
-            <Field.Root>
+            <Field.Root alignItems="center" p="2rem">
               <FieldsetLegend
-                fontSize="1.3rem"
-                _light={{ color: "blue.400" }}
-                _dark={{
-                  color: "orange.100",
-                }}
+                fontFamily="initial"
+                fontSize="5rem"
+                spaceY={12}
+                justifyItems="center"
               >
-                Seja Bem Vindo ao StreetWear!
+                <Text color="blue.900">S</Text>
+                <Text color="blue.300">W</Text>
               </FieldsetLegend>
-              <FieldHelperText
-                fontSize="0.9rem"
-                _light={{ color: "blue.400" }}
-                _dark={{
-                  color: "orange.100",
-                }}
-              >
-                Faça seu login:
-              </FieldHelperText>
             </Field.Root>
           </Stack>
           <Field.Root>
@@ -87,16 +80,10 @@ export default function Login() {
               {...register("email")}
               variant="flushed"
               placeholder="Digite seu email"
-              _light={{
-                color: "blue.400",
-                backgroundColor: "orange.100",
-                borderColor: "blue.400",
-              }}
-              _dark={{
-                color: "orange.100",
-                backgroundColor: "blue.400",
-                borderColor: "orange.100",
-              }}
+              color="orange.100"
+              backgroundColor="blue.400"
+              borderColor="orange.100"
+              _placeholder={{ color: "white" }}
             />
             <Text color="red.500" fontSize="14px">
               {" "}
@@ -110,16 +97,10 @@ export default function Login() {
               {...register("password")}
               variant="flushed"
               placeholder="Digite sua senha"
-              _light={{
-                color: "blue.400",
-                backgroundColor: "orange.100",
-                borderColor: "blue.400",
-              }}
-              _dark={{
-                color: "orange.100",
-                backgroundColor: "blue.400",
-                borderColor: "orange.100",
-              }}
+              color="orange.100"
+              backgroundColor="blue.400"
+              borderColor="orange.100"
+              _placeholder={{ color: "white" }}
             />
             <Text color="red.500" fontSize="14px">
               {" "}
@@ -135,23 +116,14 @@ export default function Login() {
               flexDir="row"
               justifyContent="space-between"
             >
-              <FieldHelperText
-                fontSize="1rem"
-                p="1rem 0"
-                _light={{ color: "blue.400" }}
-                _dark={{ color: "orange.100" }}
-              >
+              <FieldHelperText fontSize="1rem" p="1rem 0" color="orange.100">
                 Não possui uma conta?{" "}
                 <Link href="/register">
-                  <Highlight
-                    query="Cadastre-se"
-                    styles={{ color: "yellow.500" }}
-                  >
+                  <Highlight query="Cadastre-se" styles={{ color: "blue.300" }}>
                     Cadastre-se
                   </Highlight>
                 </Link>
               </FieldHelperText>
-              <ColorModeButton backgroundColor="transparent" />
             </Field.Root>
           </Field.Root>
         </Fieldset.Root>

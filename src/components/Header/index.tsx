@@ -3,7 +3,7 @@
 import { Box, Flex, Heading, Link } from "@chakra-ui/react";
 import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
-import AuthButtons from "../Button";
+import AuthButtons from "../Buttom";
 import Demo from "../Menu";
 
 const Header = () => {

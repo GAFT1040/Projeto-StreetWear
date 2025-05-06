@@ -33,10 +33,7 @@ const Demo = () => {
               </Portal>
             </Menu.Root>
             <Menu.Item value="Sobre-nós">Sobre nós</Menu.Item>
-            <Menu.Item value="Cart">
-              {" "}
-              <Cart />{" "}
-            </Menu.Item>
+            <Menu.Item value="Cart"></Menu.Item>
             <AuthButtonsMenu />
           </Menu.Content>
         </Menu.Positioner>

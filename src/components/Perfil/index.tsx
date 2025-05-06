@@ -13,7 +13,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import { PasswordInput } from "../ui/password-input";
+import DeletButton from "../DeletButtom";
 
 const Perfil = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -72,6 +72,7 @@ const Perfil = () => {
               </Stack>
             </Drawer.Body>
             <Drawer.Footer>
+              <DeletButton />
               <Button variant="outline">Cancel</Button>
               <Button>Save</Button>
             </Drawer.Footer>
