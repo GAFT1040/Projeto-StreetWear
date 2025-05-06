@@ -4,7 +4,7 @@ import {
   LoginUserData,
   RegisterUserData,
 } from "@/types/auth";
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { loginUserService, registerUserService } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -20,6 +20,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const response = await registerUserService(data);
       router.push("/login");
+      toast.success("Registro bem sucedido!");
     } catch (error: any) {
       console.log(error.response);
 
@@ -30,11 +31,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const loginUser = async (data: LoginUserData) => {
     try {
       const response = await loginUserService(data);
-      router.push("/");
       localStorage.setItem("@token", JSON.stringify(response.accessToken));
+      localStorage.setItem("@userId", JSON.stringify(response.user.id));
+      router.push("/");
       toast.success("Login bem sucedido!");
+      console.log(response);
     } catch (error: any) {
       toast.error(error.response.data);
+      console.log(error);
     }
   };
 

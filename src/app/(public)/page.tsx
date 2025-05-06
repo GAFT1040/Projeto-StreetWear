@@ -1,13 +1,28 @@
 "use client";
 
-import Demo from "@/components/Cart";
+import Cart from "@/components/Cart";
+import ProductsCard from "@/components/ProductsArea";
 import { Provider } from "@/components/ui/provider";
-import { Box, Center, Heading, Image, Text } from "@chakra-ui/react";
+import { getProductsService } from "@/services/get.products";
+import { Product } from "@/types/products";
+import { Box, Center, Grid, Heading, Image, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const fetchProducts = async () => {
+    const productsData = await getProductsService();
+    setProducts(productsData);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <Provider>
-      <Demo />
+      <Cart />
       <Center
         style={{
           backgroundImage: `url(/roupasHome.png)`,
@@ -48,10 +63,34 @@ export default function Home() {
           />
         </li>
       </Box>
+      <Box backgroundColor="gray.950" m="2rem" borderRadius="30px">
+        <Heading
+          fontSize="2rem"
+          fontFamily="Arial"
+          p="2rem"
+          color="white"
+          id="shop"
+        >
+          StreetWear Shop
+        </Heading>
+        <Box p="2rem">
+          <Grid
+            p={{ base: "0", xl: "0 5rem 0 5rem" }}
+            gridTemplateColumns={{
+              base: "repeat(1, 1fr)",
 
-      <Heading fontSize="2rem" fontFamily="Arial" p="2rem" color="blue.400">
-        Destaques
-      </Heading>
+              md: "repeat(2, 1fr)",
+
+              xl: "repeat(3, 1fr)",
+            }}
+            gap="7rem"
+          >
+            {products?.map((product, index) => (
+              <ProductsCard key={product.id} {...product} />
+            ))}
+          </Grid>
+        </Box>
+      </Box>
     </Provider>
   );
 }

@@ -3,6 +3,7 @@
 import { Box, Button, HStack, Input, InputGroup, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
+import Perfil from "../Perfil";
 
 export default function AuthButtons() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,15 +35,18 @@ export default function AuthButtons() {
         </Box>
       )}
       {isLoggedIn && (
-        <InputGroup flex="1" startElement={<LuSearch />}>
-          <Input
-            placeholder="Buscando por algo?"
-            borderColor="blue.400"
-            variant="flushed"
-            _light={{ color: "black" }}
-            _dark={{ color: "white" }}
-          />
-        </InputGroup>
+        <Box flexDirection="row" display="flex" gap="2rem">
+          <Perfil />
+          <InputGroup flex="1" startElement={<LuSearch />}>
+            <Input
+              placeholder="Buscando por algo?"
+              borderColor="blue.400"
+              variant="flushed"
+              _light={{ color: "black" }}
+              _dark={{ color: "white" }}
+            />
+          </InputGroup>
+        </Box>
       )}
     </HStack>
   );

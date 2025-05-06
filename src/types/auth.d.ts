@@ -17,11 +17,3 @@ export interface AuthContextInterface {
 export interface UserFormData extends RegisterUserData {
   confirmPassword: string;
 }
-
-export interface ProductsUserData {
-  name: string;
-  preço: number;
-  marca: string;
-  link: string;
-  tipo: string;
-}

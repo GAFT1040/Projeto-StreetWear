@@ -3,7 +3,7 @@
 import { Box, Flex, Heading, Link } from "@chakra-ui/react";
 import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
-import AuthButtons from "../Button";
+import AuthButtons from "../Buttom";
 import Demo from "../Menu";
 
 const Header = () => {
@@ -15,6 +15,10 @@ const Header = () => {
         p="1rem"
         _light={{ boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
         _dark={{ boxShadow: " rgba(255, 255, 255, 0.030) 0px 3px 8px" }}
+        position="sticky"
+        top="0"
+        zIndex="5"
+        background={{ _dark: "black", _light: "white" }}
       >
         <Heading
           fontFamily="initial"
@@ -30,15 +34,18 @@ const Header = () => {
           display={{ base: "none", sm: "flex" }}
           flexDir="row"
           gap={{ base: "1rem", md: "2rem" }}
-          fontFamily="monospace"
           fontSize="1rem"
           alignItems="center"
           cursor="pointer"
         >
           <li>
             <Link
-              href="/"
-              _hover={{ backgroundColor: "blue.400", color: "orange.100" }}
+              href="#shop"
+              _hover={{
+                backgroundColor: "blue.400",
+                color: "orange.100",
+              }}
+              display={{ base: "none", md: "flex" }}
               color="blue.400"
             >
               Shop
@@ -47,7 +54,10 @@ const Header = () => {
           <li>
             <Link
               href="/"
-              _hover={{ backgroundColor: "blue.400", color: "orange.100" }}
+              _hover={{
+                backgroundColor: "blue.400",
+                color: "orange.100",
+              }}
               color="blue.400"
               display={{ base: "none", md: "flex" }}
             >
@@ -57,7 +67,10 @@ const Header = () => {
           <li>
             <Link
               href="/"
-              _hover={{ backgroundColor: "blue.400", color: "orange.100" }}
+              _hover={{
+                backgroundColor: "blue.400",
+                color: "orange.100",
+              }}
               color="blue.400"
               display={{ base: "none", md: "flex" }}
             >
@@ -67,7 +80,10 @@ const Header = () => {
           <li>
             <Link
               href="/"
-              _hover={{ backgroundColor: "blue.400", color: "orange.100" }}
+              _hover={{
+                backgroundColor: "blue.400",
+                color: "orange.100",
+              }}
               color="blue.400"
             >
               Destaques
@@ -81,7 +97,7 @@ const Header = () => {
             color="blue.400"
           />
           <Box
-            display={{ base: "flex", sm: "none" }}
+            display={{ base: "flex", md: "none" }}
             justifyContent="center"
             alignItems="center"
           >
