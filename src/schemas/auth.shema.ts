@@ -23,7 +23,7 @@ export const registerSchema = yup.object().shape({
     .email("Email é obrigatório")
     .required("Email é obrigatório"),
   password: passwordRules,
-  confirmPassword: yup
+  confirmPassword: yup 
     .string()
     .required("A senha deve ser confimada")
     .oneOf([yup.ref("password")], "As senhas não conhecidem"),

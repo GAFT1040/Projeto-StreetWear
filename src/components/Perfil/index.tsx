@@ -41,7 +41,8 @@ const Perfil = () => {
   const ref = useRef<HTMLInputElement>(null);
 
   if (user === null) {
-    return <p>carregando</p>;
+    localStorage.clear();
+    return null;
   }
 
   return (

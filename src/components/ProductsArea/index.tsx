@@ -1,14 +1,17 @@
 import { Product } from "@/types/products";
 import { Button, Card, Image, Text } from "@chakra-ui/react";
 import { DarkMode } from "../ui/color-mode";
+import { useCart } from "@/contexts/CreateCartProducts";
+import { toast } from "react-toastify";
 
-const ProductsCard: React.FC<Product> = ({
-  link,
-  value,
-  name,
-  color,
-  mark,
-}) => {
+const ProductsCard: React.FC<Product> = (props) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(props);
+    toast.success("Produto enviado para o carrinho!");
+  };
+
   return (
     <DarkMode>
       <Card.Root
@@ -18,18 +21,18 @@ const ProductsCard: React.FC<Product> = ({
         transition="all 1s"
         _hover={{ transform: "scale(1.1)" }}
       >
-        <Image src={link} alt={name} w="auto" h="400px" />
+        <Image src={props.link} alt={props.name} w="auto" h="400px" />
         <Card.Body gap="2">
-          <Card.Title>{name}</Card.Title>
-          <Card.Description>{mark}</Card.Description>
-          <Card.Description>{color}</Card.Description>
+          <Card.Title>{props.name}</Card.Title>
+          <Card.Description>{props.mark}</Card.Description>
+          <Card.Description>{props.color}</Card.Description>
           <Text
             textStyle="2xl"
             fontWeight="medium"
             letterSpacing="tight"
             mt="2"
           >
-            {value.toLocaleString("pt-BR", {
+            {props.value.toLocaleString("pt-BR", {
               currency: "BRL",
               style: "currency",
             })}
@@ -42,13 +45,14 @@ const ProductsCard: React.FC<Product> = ({
             borderRadius="10px"
             w="100%"
           >
-            Comprea Agora
+            Comprar Agora
           </Button>
           <Button
             variant="ghost"
             border="2px solid gray"
             borderRadius="10px"
             w="100%"
+            onClick={handleAddToCart}
           >
             Adicionar ao Carrinho
           </Button>
