@@ -3,13 +3,23 @@ import { Button, Card, Image, Text } from "@chakra-ui/react";
 import { DarkMode } from "../ui/color-mode";
 import { useCart } from "@/contexts/CreateCartProducts";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ProductsCard: React.FC<Product> = (props) => {
   const { addToCart } = useCart();
+  const router = useRouter();
+  const { isLoged } = useAuth();
 
   const handleAddToCart = () => {
-    addToCart(props);
-    toast.success("Produto enviado para o carrinho!");
+    console.log(isLoged);
+    if (!isLoged) {
+      toast.error("Você ainda não fez loguin");
+      router.push("/login");
+    } else {
+      addToCart(props);
+      toast.success("Produto enviado para o carrinho!");
+    }
   };
 
   return (

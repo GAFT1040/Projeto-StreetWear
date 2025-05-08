@@ -2,6 +2,7 @@
 
 import { Product } from "@/types/products";
 import { createContext, ReactNode, useContext, useState } from "react";
+import { useEffect } from "react";
 
 type CartItem = Product & { quantity: number };
 
@@ -15,7 +16,17 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window !== "undefined") {
+      const storedCart = localStorage.getItem("@cart");
+      return storedCart ? JSON.parse(storedCart) : [];
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("@cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product: Product) => {
     setCart((prev) => {

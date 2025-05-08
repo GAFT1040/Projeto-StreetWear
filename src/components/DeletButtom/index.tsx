@@ -20,8 +20,14 @@ const DeletButton = () => {
   return (
     <HStack>
       {!!isLoggedIn && (
-        <Button onClick={Delet} background="red.700" color="white">
-          Sair desta conta?
+        <Button
+          onClick={Delet}
+          borderRadius="full"
+          background="red.700"
+          color="white"
+          w="100%"
+        >
+          Deseja sair da conta?
         </Button>
       )}
     </HStack>
