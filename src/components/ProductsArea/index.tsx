@@ -5,6 +5,7 @@ import { useCart } from "@/contexts/CreateCartProducts";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { useState } from "react";
 
 const ProductsCard: React.FC<Product> = (props) => {
   const { addToCart } = useCart();
@@ -12,6 +13,15 @@ const ProductsCard: React.FC<Product> = (props) => {
   const { isLoged } = useAuth();
 
   const handleAddToCart = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+
+    interface Props {
+      products: Product[];
+    }
+
+    const [filteredProducts, setFilteredProducts] =
+      useState<Product[]>(products);
+
     console.log(isLoged);
     if (!isLoged) {
       toast.error("Você ainda não fez loguin");
@@ -31,7 +41,13 @@ const ProductsCard: React.FC<Product> = (props) => {
         transition="all 1s"
         _hover={{ transform: "scale(1.1)" }}
       >
-        <Image src={props.link} alt={props.name} w="auto" h="400px" />
+        <Image
+          src={props.link}
+          alt={props.name}
+          w="auto"
+          h="500px"
+          objectFit="fill"
+        />
         <Card.Body gap="2">
           <Card.Title>{props.name}</Card.Title>
           <Card.Description>{props.mark}</Card.Description>

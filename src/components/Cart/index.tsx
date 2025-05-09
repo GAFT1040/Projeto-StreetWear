@@ -1,3 +1,5 @@
+"use client";
+
 import { useCart } from "@/contexts/CreateCartProducts";
 import {
   Button,
@@ -12,13 +14,14 @@ import {
   Box,
   Image,
   Badge,
+  GridItem,
 } from "@chakra-ui/react";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { FiTrash } from "react-icons/fi";
 
 const Cart = () => {
-  const { cart, total, clearCart } = useCart();
+  const { cart, total, clearCart, calculate } = useCart();
 
   return (
     <Drawer.Root>
@@ -50,7 +53,7 @@ const Cart = () => {
               fontSize="0.9rem"
               padding="0.4rem"
             >
-              {cart.length}
+              {calculate}
             </Badge>
           )}
         </IconButton>
@@ -91,7 +94,7 @@ const Cart = () => {
                               {item.name}{" "}
                             </Card.Title>
                             <Box display="flex" gap={3}>
-                              <Text>{item.quantity} x</Text>
+                              <Text color="black">{item.quantity} x</Text>
                               <Text
                                 fontSize="1.1rem"
                                 color="blue.400"
