@@ -12,6 +12,8 @@ export interface LoginUserData {
 export interface AuthContextInterface {
   registerUser: (data: RegisterUserData) => void;
   loginUser: (data: loginUserData) => void;
+  user: User | null;
+  isLoged: booLean;
 }
 
 export interface UserFormData extends RegisterUserData {

@@ -5,8 +5,22 @@ import ProductsCard from "@/components/ProductsArea";
 import { Provider } from "@/components/ui/provider";
 import { getProductsService } from "@/services/get.products";
 import { Product } from "@/types/products";
-import { Box, Center, Grid, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Grid,
+  Heading,
+  Image,
+  Link,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { FaInstagram } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { LightMode } from "@/components/ui/color-mode";
+import { TbPointFilled } from "react-icons/tb";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -90,6 +104,92 @@ export default function Home() {
             ))}
           </Grid>
         </Box>
+      </Box>
+      <Box>
+        <LightMode>
+          <Box
+            backgroundColor="blue.400"
+            w="full"
+            p={{
+              base: "1rem 3rem 1rem 3rem",
+              sm: " 4rem 8rem 4rem 8rem",
+              xl: " 2rem 10rem 2rem 10rem",
+            }}
+          >
+            <Center
+              fontFamily="initial"
+              fontSize="5rem"
+              spaceY={12}
+              justifyItems="center"
+              mb={{ base: "none", sm: "1rem", xl: "2rem" }}
+              display={{ base: " none", sm: "flex" }}
+            >
+              <Text color="blue.900">S</Text>
+              <Text color="blue.300">W</Text>
+            </Center>
+            <Box as="ul" display="flex" justifyContent="space-between">
+              <li>
+                <Box display="flex" flexDir="column" gap="2">
+                  <Heading>Contatos</Heading>
+
+                  <Text color="white">Telefone:</Text>
+                  <Text>(62) 99373-7258</Text>
+                  <Text color="white">Email:</Text>
+                  <Text>streetwear@gmail.com</Text>
+                </Box>
+              </li>
+
+              <li>
+                <Box
+                  display={{ base: "none", sm: "flex", xl: "flex" }}
+                  flexDir="column"
+                  gap="2"
+                >
+                  <Heading>Mapa da Empresa</Heading>
+                  <Link>
+                    <TbPointFilled />
+                    Sobre nós
+                  </Link>
+                  <Link>
+                    <TbPointFilled />
+                    Promoções
+                  </Link>
+                  <Link>
+                    <TbPointFilled />
+                    Distribuição
+                  </Link>
+                </Box>
+              </li>
+
+              <li>
+                <Box flexDir="column" display={{ base: "none", md: "flex" }}>
+                  <Heading>Mídias</Heading>
+                  <Box
+                    alignItems="center"
+                    flexDir="column"
+                    gap="4"
+                    fontSize="1.7rem"
+                    pt="1rem"
+                    display={{ base: "none", sm: "flex", xl: "flex" }}
+                  >
+                    <Link>
+                      <FaInstagram />
+                    </Link>
+                    <Link>
+                      <BsTwitterX />
+                    </Link>
+                    <Link>
+                      <FaWhatsapp />
+                    </Link>
+                    <Link>
+                      <FaFacebookF />
+                    </Link>
+                  </Box>
+                </Box>
+              </li>
+            </Box>
+          </Box>
+        </LightMode>
       </Box>
     </Provider>
   );
