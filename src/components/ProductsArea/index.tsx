@@ -37,7 +37,7 @@ const ProductsCard: React.FC<Product> = (props) => {
           alt={props.name}
           w="auto"
           h="500px"
-          objectFit="fill"
+          objectFit="cover"
         />
         <Card.Body gap="2">
           <Card.Title>{props.name}</Card.Title>

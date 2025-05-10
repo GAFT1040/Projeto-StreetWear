@@ -107,13 +107,22 @@ export default function Home() {
       </Box>
       <Box>
         <LightMode>
-          <Box backgroundColor="blue.400" p="2rem">
+          <Box
+            backgroundColor="blue.400"
+            w="full"
+            p={{
+              base: "1rem 3rem 1rem 3rem",
+              sm: " 4rem 8rem 4rem 8rem",
+              xl: " 2rem 10rem 2rem 10rem",
+            }}
+          >
             <Center
               fontFamily="initial"
               fontSize="5rem"
               spaceY={12}
               justifyItems="center"
-              mb="2rem"
+              mb={{ base: "none", sm: "1rem", xl: "2rem" }}
+              display={{ base: " none", sm: "flex" }}
             >
               <Text color="blue.900">S</Text>
               <Text color="blue.300">W</Text>
@@ -131,7 +140,11 @@ export default function Home() {
               </li>
 
               <li>
-                <Box display="flex" flexDir="column" gap="2">
+                <Box
+                  display={{ base: "none", sm: "flex", xl: "flex" }}
+                  flexDir="column"
+                  gap="2"
+                >
                   <Heading>Mapa da Empresa</Heading>
                   <Link>
                     <TbPointFilled />
@@ -149,27 +162,29 @@ export default function Home() {
               </li>
 
               <li>
-                <Heading>Mídias</Heading>
-                <Box
-                  display="flex"
-                  flexDir="row"
-                  alignItems="center"
-                  gap="4"
-                  fontSize="1.7rem"
-                  pt="1rem"
-                >
-                  <Link>
-                    <FaInstagram />
-                  </Link>
-                  <Link>
-                    <BsTwitterX />
-                  </Link>
-                  <Link>
-                    <FaWhatsapp />
-                  </Link>
-                  <Link>
-                    <FaFacebookF />
-                  </Link>
+                <Box flexDir="column" display={{ base: "none", md: "flex" }}>
+                  <Heading>Mídias</Heading>
+                  <Box
+                    alignItems="center"
+                    flexDir="column"
+                    gap="4"
+                    fontSize="1.7rem"
+                    pt="1rem"
+                    display={{ base: "none", sm: "flex", xl: "flex" }}
+                  >
+                    <Link>
+                      <FaInstagram />
+                    </Link>
+                    <Link>
+                      <BsTwitterX />
+                    </Link>
+                    <Link>
+                      <FaWhatsapp />
+                    </Link>
+                    <Link>
+                      <FaFacebookF />
+                    </Link>
+                  </Box>
                 </Box>
               </li>
             </Box>
