@@ -13,15 +13,6 @@ const ProductsCard: React.FC<Product> = (props) => {
   const { isLoged } = useAuth();
 
   const handleAddToCart = () => {
-    const [searchTerm, setSearchTerm] = useState("");
-
-    interface Props {
-      products: Product[];
-    }
-
-    const [filteredProducts, setFilteredProducts] =
-      useState<Product[]>(products);
-
     console.log(isLoged);
     if (!isLoged) {
       toast.error("Você ainda não fez loguin");
