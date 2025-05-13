@@ -34,6 +34,8 @@ export default function Home() {
     fetchProducts();
   }, []);
 
+  console.log(products);
+
   return (
     <Provider>
       <Cart />

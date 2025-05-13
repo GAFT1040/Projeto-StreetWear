@@ -5,8 +5,21 @@ import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
 import AuthButtons from "../Buttom";
 import Demo from "../Menu";
+import { useEffect, useState } from "react";
+import { getProductsService } from "@/services/get.products";
+import { Product } from "@/types/products";
 
 const Header = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const fetchProducts = async () => {
+    const productsData = await getProductsService();
+    setProducts(productsData);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <Provider>
       <Flex
@@ -61,33 +74,19 @@ const Header = () => {
               color="blue.400"
               display={{ base: "none", md: "flex" }}
             >
-              Lista de estoques
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              _hover={{
-                backgroundColor: "blue.400",
-                color: "orange.100",
-              }}
-              color="blue.400"
-              display={{ base: "none", md: "flex" }}
-            >
               Sobre nós
             </Link>
           </li>
           <li>
-            <Link
-              href="/"
+            <Box
               _hover={{
                 backgroundColor: "blue.400",
                 color: "orange.100",
               }}
               color="blue.400"
             >
-              Destaques
-            </Link>
+              {/* ola */}
+            </Box>
           </li>
         </Box>
         <Flex alignItems="center">

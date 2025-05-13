@@ -5,7 +5,6 @@ import { useCart } from "@/contexts/CreateCartProducts";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { useState } from "react";
 
 const ProductsCard: React.FC<Product> = (props) => {
   const { addToCart } = useCart();
