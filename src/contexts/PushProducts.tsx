@@ -1,3 +1,5 @@
+"use client";
+
 import { getProductsService } from "@/services/get.products";
 import { Product } from "@/types/products";
 import React, { createContext, useContext, useState } from "react";
@@ -33,3 +35,5 @@ export const UseProducts = () => {
   if (!context) throw new Error("Produtos não disponível no moment");
   return context;
 };
+
+export default IntensProvider;

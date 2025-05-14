@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, Heading, Link } from "@chakra-ui/react";
+import { Box, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
 import AuthButtons from "../Buttom";
@@ -53,19 +53,6 @@ const Header = () => {
         >
           <li>
             <Link
-              href="#shop"
-              _hover={{
-                backgroundColor: "blue.400",
-                color: "orange.100",
-              }}
-              display={{ base: "none", md: "flex" }}
-              color="blue.400"
-            >
-              Shop
-            </Link>
-          </li>
-          <li>
-            <Link
               href="/"
               _hover={{
                 backgroundColor: "blue.400",
@@ -78,15 +65,29 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Box
+            <Link
+              href="#shop"
               _hover={{
                 backgroundColor: "blue.400",
                 color: "orange.100",
               }}
+              display={{ base: "none", md: "flex" }}
               color="blue.400"
             >
-              {/* ola */}
-            </Box>
+              Shop
+            </Link>
+          </li>
+          <li>
+            <Text
+              _hover={{
+                backgroundColor: "blue.400",
+                color: "orange.100",
+              }}
+              display={{ base: "none", md: "flex" }}
+              color="blue.400"
+            >
+              Contact
+            </Text>
           </li>
         </Box>
         <Flex alignItems="center">
