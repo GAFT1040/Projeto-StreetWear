@@ -5,6 +5,8 @@ import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
 import AuthButtons from "../Buttom";
 import Demo from "../Menu";
+import Mark from "../Mark";
+import About from "../MoreAbout";
 
 const Header = () => {
   return (
@@ -39,6 +41,11 @@ const Header = () => {
           cursor="pointer"
         >
           <li>
+            <Box display={{ base: "none", md: "flex" }}>
+              <About />
+            </Box>
+          </li>
+          <li>
             <Link
               href="#shop"
               _hover={{
@@ -52,42 +59,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link
-              href="/"
-              _hover={{
-                backgroundColor: "blue.400",
-                color: "orange.100",
-              }}
-              color="blue.400"
-              display={{ base: "none", md: "flex" }}
-            >
-              Lista de estoques
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              _hover={{
-                backgroundColor: "blue.400",
-                color: "orange.100",
-              }}
-              color="blue.400"
-              display={{ base: "none", md: "flex" }}
-            >
-              Sobre nós
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              _hover={{
-                backgroundColor: "blue.400",
-                color: "orange.100",
-              }}
-              color="blue.400"
-            >
-              Destaques
-            </Link>
+            <Mark />
           </li>
         </Box>
         <Flex alignItems="center">
