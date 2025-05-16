@@ -7,6 +7,7 @@ import AuthButtons from "../Buttom";
 import Demo from "../Menu";
 import Mark from "../Mark";
 import About from "../MoreAbout";
+import Buy from "../PayPage";
 
 const Header = () => {
   return (
