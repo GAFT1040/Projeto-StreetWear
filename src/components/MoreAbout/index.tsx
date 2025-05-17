@@ -59,7 +59,7 @@ const About = () => {
                   display={{ base: "none", xl: "flex" }}
                 />
 
-                <Text fontSize="1.1rem" color="black">
+                <Text fontSize="1.1rem" color="black" textAlign="justify">
                   A StreetWarShop não nasceu em um escritório com
                   ar-condicionado nem foi projetada por grandes agências. Ela
                   nasceu no calor do asfalto de Goiás, sob o sol escaldante do

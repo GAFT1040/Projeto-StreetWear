@@ -69,7 +69,7 @@ const Header = () => {
         </Box>
         <Flex alignItems="center">
           <ColorModeButton
-            p="0 3rem 0 0"
+            p="0 2rem 0 2rem"
             background="transparent"
             color="blue.400"
           />
@@ -80,7 +80,7 @@ const Header = () => {
           >
             <Demo />
           </Box>
-          <Box display={{ base: "none", lg: "flex" }}>
+          <Box display={{ base: "none", md: "flex" }}>
             <AuthButtons />
           </Box>
         </Flex>
