@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, Heading, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
 import AuthButtons from "../Buttom";
@@ -9,6 +9,9 @@ import Mark from "../Mark";
 import About from "../MoreAbout";
 
 const Header = () => {
+  const reloadPage = () => {
+    window.location.reload();
+  };
   return (
     <Provider>
       <Flex
@@ -22,15 +25,17 @@ const Header = () => {
         zIndex="5"
         background={{ _dark: "black", _light: "white" }}
       >
-        <Heading
-          fontFamily="initial"
-          fontSize="2rem"
-          alignContent="center"
-          color="blue.400"
-        >
-          <p>S</p>
-          <p>W</p>
-        </Heading>
+        <Button backgroundColor="transparent" onClick={reloadPage}>
+          <Heading
+            fontFamily="initial"
+            fontSize="2rem"
+            alignContent="center"
+            color="blue.400"
+          >
+            <p>S</p>
+            <p>W</p>
+          </Heading>
+        </Button>
         <Box
           as="ul"
           display={{ base: "none", sm: "flex" }}
