@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CreateCartProducts";
 import {
   Button,
@@ -15,13 +16,28 @@ import {
   Image,
   Badge,
   GridItem,
+  Link,
 } from "@chakra-ui/react";
+import { useState } from "react";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { FiTrash } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { cart, total, clearCart, calculate } = useCart();
+
+  const { isLoged } = useAuth();
+
+  const [showPay, setShowPay] = useState(false);
+
+  const buy = () => {
+    if (cart.length === 0 || !isLoged) {
+      toast.error("Você não pode finalizar esta compra");
+    } else {
+      window.location.href = "/pay";
+    }
+  };
 
   return (
     <Drawer.Root>
@@ -142,6 +158,7 @@ const Cart = () => {
                 color="blue.800"
                 fontSize="1.1rem"
                 borderRadius="2rem"
+                onClick={buy}
               >
                 Finalizar Compra
               </Button>
