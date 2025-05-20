@@ -1,13 +1,27 @@
-import { Button, Menu, MenuSeparator, Portal } from "@chakra-ui/react";
+"use client";
+
+import {
+  Button,
+  Flex,
+  Link,
+  Menu,
+  MenuItem,
+  Portal,
+  Text,
+} from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-import { LuChevronRight } from "react-icons/lu";
 import AuthButtonsMenu from "../MenuSing";
-import Cart from "../Cart";
+import Mark from "../Mark";
+import Perfil from "../Perfil";
+import CategoryButton from "../CategoryButton";
 
-const Demo = () => {
+const MobileMenu = () => {
+  const reloadPage = () => {
+    window.location.href = "http://localhost:3000/";
+  };
   return (
-    <Menu.Root>
+    <Menu.Root closeOnSelect={false}>
       <Menu.Trigger asChild>
         <IconButton background="transparent" color="blue.400">
           <FiMenu />
@@ -15,25 +29,66 @@ const Demo = () => {
       </Menu.Trigger>
       <Portal>
         <Menu.Positioner>
-          <Menu.Content>
-            <Menu.Item value="Shop">Shop</Menu.Item>
-            <Menu.Item value="DEsconto">Destaques</Menu.Item>
-            <Menu.Root positioning={{ placement: "right-start", gutter: 2 }}>
-              <Menu.TriggerItem>
-                Peças <LuChevronRight />
-              </Menu.TriggerItem>
-              <Portal>
-                <Menu.Positioner>
-                  <Menu.Content>
-                    <Menu.Item value="Camisas">Camisas</Menu.Item>
-                    <Menu.Item value="Calças">Calças</Menu.Item>
-                    <Menu.Item value="Tênis">Tênis</Menu.Item>
-                  </Menu.Content>
-                </Menu.Positioner>
-              </Portal>
-            </Menu.Root>
-            <Menu.Item value="Sobre-nós">Sobre nós</Menu.Item>
-            <Menu.Item value="Cart"></Menu.Item>
+          <Menu.Content
+            as="ul"
+            display="flex"
+            flexDir="column"
+            justifyItems="center"
+          >
+            <Menu.Item value="Shop" as="li">
+              <Button
+                size="sm"
+                variant="outline"
+                backgroundColor="transparent"
+                borderColor="transparent"
+                onClick={reloadPage}
+              >
+                <Text
+                  _hover={{
+                    backgroundColor: "blue.400",
+                    color: "orange.100",
+                  }}
+                  color="blue.400"
+                  fontWeight="normal"
+                  fontSize="1rem"
+                >
+                  Home
+                </Text>
+              </Button>
+            </Menu.Item>
+            <Menu.Item value="Marca" as="li">
+              <Mark />
+            </Menu.Item>
+            <Menu.Item value="Sobre-nós" as="li">
+              <Button
+                variant="outline"
+                backgroundColor="transparent"
+                borderColor="transparent"
+              >
+                <Link href="/AboutUs">
+                  <Text
+                    _hover={{
+                      backgroundColor: "blue.400",
+                      color: "orange.100",
+                    }}
+                    color="blue.400"
+                    fontWeight="normal"
+                    fontSize="1rem"
+                  >
+                    Sobre Nós
+                  </Text>
+                </Link>
+              </Button>
+            </Menu.Item>
+            <Menu.Item
+              value="Lista de Produtos"
+              display={{ base: "flex", sm: "none" }}
+            >
+              <CategoryButton />
+            </Menu.Item>
+            <Menu.Item value="Perfil" as="li">
+              <Perfil />
+            </Menu.Item>
             <AuthButtonsMenu />
           </Menu.Content>
         </Menu.Positioner>
@@ -42,4 +97,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default MobileMenu;

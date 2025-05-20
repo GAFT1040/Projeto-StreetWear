@@ -1,17 +1,18 @@
 "use client";
 
-import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
 import AuthButtons from "../Buttom";
-import Demo from "../Menu";
 import Mark from "../Mark";
-import About from "../MoreAbout";
+import CategoryButton from "../CategoryButton";
+import MobileMenu from "../Menu";
 
 const Header = () => {
   const reloadPage = () => {
-    window.location.reload();
+    window.location.href = "http://localhost:3000/";
   };
+
   return (
     <Provider>
       <Flex
@@ -25,7 +26,7 @@ const Header = () => {
         zIndex="5"
         background={{ _dark: "black", _light: "white" }}
       >
-        <Button backgroundColor="transparent" onClick={reloadPage}>
+        <Button backgroundColor="transparent">
           <Heading
             fontFamily="initial"
             fontSize="2rem"
@@ -47,24 +48,57 @@ const Header = () => {
         >
           <li>
             <Box display={{ base: "none", md: "flex" }}>
-              <About />
+              <Button
+                variant="outline"
+                backgroundColor="transparent"
+                borderColor="transparent"
+              >
+                <Link href="/AboutUs">
+                  <Text
+                    _hover={{
+                      backgroundColor: "blue.400",
+                      color: "orange.100",
+                    }}
+                    color="blue.400"
+                    fontWeight="normal"
+                    fontSize="1rem"
+                  >
+                    Sobre Nós
+                  </Text>
+                </Link>
+              </Button>
             </Box>
           </li>
           <li>
-            <Link
-              href="#shop"
-              _hover={{
-                backgroundColor: "blue.400",
-                color: "orange.100",
-              }}
-              display={{ base: "none", md: "flex" }}
-              color="blue.400"
-            >
-              Shop
-            </Link>
+            <Box display={{ base: "none", md: "flex" }}>
+              <Button
+                size="sm"
+                variant="outline"
+                backgroundColor="transparent"
+                borderColor="transparent"
+                onClick={reloadPage}
+              >
+                <Text
+                  _hover={{
+                    backgroundColor: "blue.400",
+                    color: "orange.100",
+                  }}
+                  color="blue.400"
+                  fontWeight="normal"
+                  fontSize="1rem"
+                >
+                  Home
+                </Text>
+              </Button>
+            </Box>
           </li>
           <li>
-            <Mark />
+            <Box display={{ base: "none", md: "flex" }}>
+              <Mark />
+            </Box>
+          </li>
+          <li>
+            <CategoryButton />
           </li>
         </Box>
         <Flex alignItems="center">
@@ -74,13 +108,13 @@ const Header = () => {
             color="blue.400"
           />
           <Box
-            display={{ base: "flex", md: "none" }}
+            display={{ base: "flex", lg: "none" }}
             justifyContent="center"
             alignItems="center"
           >
-            <Demo />
+            <MobileMenu />
           </Box>
-          <Box display={{ base: "none", md: "flex" }}>
+          <Box display={{ base: "none", lg: "flex" }}>
             <AuthButtons />
           </Box>
         </Flex>

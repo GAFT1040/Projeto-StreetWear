@@ -39,7 +39,7 @@ export default function Home() {
       <Cart />
       <Center
         style={{
-          backgroundImage: `url(/roupasHome.png)`,
+          backgroundImage: `url(https://img.freepik.com/fotos-premium/fundo-azul-do-tom-da-montanha-da-paisagem_34142-326.jpg)`,
           backgroundSize: "auto",
           backgroundPosition: "center",
         }}
