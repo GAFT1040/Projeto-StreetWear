@@ -23,6 +23,16 @@ const ProductsCard: React.FC<Product> = (props) => {
     }
   };
 
+  const handleBuyNow = () => {
+    if (!isLoged) {
+      toast.error("Você ainda não fez login");
+      router.push("/login");
+    } else {
+      addToCart(props); // adiciona o produto ao carrinho
+      router.push("/pay"); // redireciona para a tela de pagamento
+    }
+  };
+
   return (
     <DarkMode>
       <Card.Root
@@ -61,6 +71,7 @@ const ProductsCard: React.FC<Product> = (props) => {
             backgroundColor="blue.400"
             borderRadius="10px"
             w="100%"
+            onClick={handleBuyNow}
           >
             Comprar Agora
           </Button>

@@ -117,8 +117,11 @@ export default function Pay() {
           </Box>
           <Center>
             <Box p="1rem" display="flex" flexDir="column" color="black">
-              <Text>Informarções do pedido</Text>
+              <Text>Informarções do pedido:</Text>
               <Text>{calculate} produtos estão no carrinho</Text>
+              {cart.map((product) => (
+                <Text key={product.id}> -{product.name}.</Text>
+              ))}
               <Text>Total da compra: {total}</Text>
             </Box>
             <Box>

@@ -2,6 +2,7 @@
 
 import ProductsCard from "@/components/ProductsArea";
 import { DarkMode } from "@/components/ui/color-mode";
+import { useProductFilter } from "@/contexts/ProductFilterContext";
 import {
   getCategories,
   getProductsByCategory,
@@ -15,10 +16,10 @@ import { useEffect, useState } from "react";
 export default function Categories() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const { filter } = useProductFilter(); // <-- Pega o filtro global
 
   const params = useParams();
   const router = useRouter();
-
   const selectedCategory = params?.categoryId;
 
   const fetchCategories = async () => {
@@ -28,21 +29,38 @@ export default function Categories() {
 
   const fetchProducts = async (id: string) => {
     const numberId = Number(id);
+    let response: Product[];
+
     if (isNaN(numberId)) {
-      const resp = await getProductsByCategory();
-      setProducts(resp);
-      return;
+      response = await getProductsByCategory();
+    } else {
+      response = await getProductsByCategory(id);
     }
-    const filteredProducts = await getProductsByCategory(id);
+
+    // Aplica o filtro global aos produtos
+    const normalizedFilter = filter
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    const filteredProducts = response.filter((product) =>
+      product.name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .includes(normalizedFilter)
+    );
+
     setProducts(filteredProducts);
   };
-  useEffect(() => {
-    fetchProducts(selectedCategory as string);
-  }, [selectedCategory]);
 
   useEffect(() => {
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    fetchProducts(selectedCategory as string);
+  }, [selectedCategory, filter]);
   return (
     <Flex m="auto">
       <Box display={{ base: "none", md: "flex" }}>

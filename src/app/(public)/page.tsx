@@ -21,6 +21,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { LightMode } from "@/components/ui/color-mode";
 import { TbPointFilled } from "react-icons/tb";
+import { useProductFilter } from "@/contexts/ProductFilterContext";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,6 +34,30 @@ export default function Home() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const { filter } = useProductFilter(); // <- usa o filtro global
+
+  useEffect(() => {
+    const fetchFilteredProducts = async () => {
+      const allProducts = await getProductsService();
+      const normalizedFilter = filter
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      const filtered = allProducts.filter((product: Product) =>
+        product.name
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(normalizedFilter)
+      );
+
+      setProducts(filtered);
+    };
+
+    fetchFilteredProducts();
+  }, [filter]);
 
   return (
     <Provider>

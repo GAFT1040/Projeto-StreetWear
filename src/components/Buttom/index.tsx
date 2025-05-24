@@ -4,9 +4,11 @@ import { Box, Button, HStack, Input, InputGroup, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import Perfil from "../Perfil";
+import { useProductFilter } from "@/contexts/ProductFilterContext";
 
 export default function AuthButtons() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { filter, setFilter } = useProductFilter();
 
   useEffect(() => {
     const token = localStorage.getItem("@token");
@@ -42,6 +44,8 @@ export default function AuthButtons() {
               placeholder="Buscando por algo?"
               borderColor="blue.400"
               variant="flushed"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
               _light={{ color: "black" }}
               _dark={{ color: "white" }}
             />

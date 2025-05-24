@@ -85,7 +85,7 @@ const Cart = () => {
               <VStack align="stretch">
                 {cart.length === 0 ? (
                   <Text fontSize="1rem" color="black">
-                    Não há nada em seu carrinho.
+                    Não há nada no seu carrinho.
                   </Text>
                 ) : (
                   cart.map((item) => (
@@ -130,13 +130,7 @@ const Cart = () => {
                 )}
               </VStack>
             </Drawer.Body>
-            <Box
-              justifyItems="center"
-              m="2rem"
-              fontSize="1.1rem"
-              backgroundColor="blue.400"
-              borderRadius="1rem"
-            >
+            <Box justifyItems="center" m="2rem" backgroundColor="transparent">
               <Text p="1.1rem" fontWeight="bold" color="white">
                 Total:{" "}
                 {total.toLocaleString("pt-BR", {

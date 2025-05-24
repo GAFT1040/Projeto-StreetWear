@@ -35,7 +35,7 @@ const MobileMenu = () => {
             flexDir="column"
             justifyItems="center"
           >
-            <Menu.Item value="Shop" as="li">
+            <Menu.Item value="Shop" as="li" justifyContent="center">
               <Button
                 size="sm"
                 variant="outline"
@@ -56,10 +56,10 @@ const MobileMenu = () => {
                 </Text>
               </Button>
             </Menu.Item>
-            <Menu.Item value="Marca" as="li">
+            <Menu.Item value="Marca" as="li" justifyContent="center">
               <Mark />
             </Menu.Item>
-            <Menu.Item value="Sobre-nós" as="li">
+            <Menu.Item value="Sobre-nós" as="li" justifyContent="center">
               <Button
                 variant="outline"
                 backgroundColor="transparent"
@@ -86,7 +86,7 @@ const MobileMenu = () => {
             >
               <CategoryButton />
             </Menu.Item>
-            <Menu.Item value="Perfil" as="li">
+            <Menu.Item value="Perfil" as="li" justifyContent="center">
               <Perfil />
             </Menu.Item>
             <AuthButtonsMenu />
