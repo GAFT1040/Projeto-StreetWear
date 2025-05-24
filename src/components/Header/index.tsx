@@ -1,14 +1,18 @@
 "use client";
 
-import { Box, Flex, Heading, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { Provider } from "../ui/provider";
 import { ColorModeButton } from "../ui/color-mode";
 import AuthButtons from "../Buttom";
-import Demo from "../Menu";
 import Mark from "../Mark";
-import About from "../MoreAbout";
+import CategoryButton from "../CategoryButton";
+import MobileMenu from "../Menu";
 
 const Header = () => {
+  const reloadPage = () => {
+    window.location.href = "http://localhost:3000/";
+  };
+
   return (
     <Provider>
       <Flex
@@ -22,15 +26,17 @@ const Header = () => {
         zIndex="5"
         background={{ _dark: "black", _light: "white" }}
       >
-        <Heading
-          fontFamily="initial"
-          fontSize="2rem"
-          alignContent="center"
-          color="blue.400"
-        >
-          <p>S</p>
-          <p>W</p>
-        </Heading>
+        <Button backgroundColor="transparent">
+          <Heading
+            fontFamily="initial"
+            fontSize="2rem"
+            alignContent="center"
+            color="blue.400"
+          >
+            <p>S</p>
+            <p>W</p>
+          </Heading>
+        </Button>
         <Box
           as="ul"
           display={{ base: "none", sm: "flex" }}
@@ -42,38 +48,71 @@ const Header = () => {
         >
           <li>
             <Box display={{ base: "none", md: "flex" }}>
-              <About />
+              <Button
+                variant="outline"
+                backgroundColor="transparent"
+                borderColor="transparent"
+              >
+                <Link href="/AboutUs">
+                  <Text
+                    _hover={{
+                      backgroundColor: "blue.400",
+                      color: "orange.100",
+                    }}
+                    color="blue.400"
+                    fontWeight="normal"
+                    fontSize="1rem"
+                  >
+                    Sobre Nós
+                  </Text>
+                </Link>
+              </Button>
             </Box>
           </li>
           <li>
-            <Link
-              href="#shop"
-              _hover={{
-                backgroundColor: "blue.400",
-                color: "orange.100",
-              }}
-              display={{ base: "none", md: "flex" }}
-              color="blue.400"
-            >
-              Shop
-            </Link>
+            <Box display={{ base: "none", md: "flex" }}>
+              <Button
+                size="sm"
+                variant="outline"
+                backgroundColor="transparent"
+                borderColor="transparent"
+                onClick={reloadPage}
+              >
+                <Text
+                  _hover={{
+                    backgroundColor: "blue.400",
+                    color: "orange.100",
+                  }}
+                  color="blue.400"
+                  fontWeight="normal"
+                  fontSize="1rem"
+                >
+                  Home
+                </Text>
+              </Button>
+            </Box>
           </li>
           <li>
-            <Mark />
+            <Box display={{ base: "none", md: "flex" }}>
+              <Mark />
+            </Box>
+          </li>
+          <li>
+            <CategoryButton />
           </li>
         </Box>
         <Flex alignItems="center">
           <ColorModeButton
-            p="0 3rem 0 0"
+            p="0 2rem 0 2rem"
             background="transparent"
             color="blue.400"
           />
           <Box
-            display={{ base: "flex", md: "none" }}
+            display={{ base: "flex", lg: "none" }}
             justifyContent="center"
             alignItems="center"
           >
-            <Demo />
+            <MobileMenu />
           </Box>
           <Box display={{ base: "none", lg: "flex" }}>
             <AuthButtons />

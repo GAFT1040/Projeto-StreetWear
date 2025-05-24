@@ -1,6 +1,7 @@
 import { Provider } from "@/components/ui/provider";
 import AuthProvider from "@/contexts/AuthContext";
 import { CartProvider } from "@/contexts/CreateCartProducts";
+import { ProductFilterProvider } from "@/contexts/ProductFilterContext";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -34,11 +35,13 @@ export default function RootLayout({
     >
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ToastContainer />
-        <CartProvider>
-          <Provider>
-            <AuthProvider>{children}</AuthProvider>
-          </Provider>
-        </CartProvider>
+        <ProductFilterProvider>
+          <CartProvider>
+            <Provider>
+              <AuthProvider>{children}</AuthProvider>
+            </Provider>
+          </CartProvider>
+        </ProductFilterProvider>
       </body>
     </html>
   );
