@@ -52,9 +52,9 @@ const CategoryButton = () => {
         <Menu.Positioner>
           <Menu.Content>
             {categories.map((item, index) => (
-              <Menu.Item key={index} asChild value={item.category_name}>
+              <Menu.Item key={index} asChild value={item.name}>
                 <Link href={`/categories/${item.id}`}>
-                  <Text> {item.category_name} </Text>
+                  <Text> {item.name} </Text>
                 </Link>
               </Menu.Item>
             ))}

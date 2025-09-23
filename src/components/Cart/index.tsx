@@ -102,7 +102,7 @@ const Cart = () => {
                           <Image
                             objectFit="contain"
                             maxW="90px"
-                            src={item.link}
+                            src={item.foto}
                             alt={item.name}
                           />
                           <Card.Body>
@@ -116,10 +116,12 @@ const Cart = () => {
                                 color="blue.400"
                                 fontWeight="bold"
                               >
-                                {item.value.toLocaleString("pt-BR", {
+                                {
+                                item.value.toLocaleString("pt-BR", {
                                   style: "currency",
                                   currency: "BRL",
-                                })}
+                                })
+                              }
                               </Text>
                             </Box>
                           </Card.Body>

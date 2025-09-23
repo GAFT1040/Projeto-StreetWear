@@ -8,6 +8,6 @@ export const registerUserService = async (data: RegisterUserData) => {
 
 export const loginUserService = async (data: LoginUserData) => {
   //http://localhost:3002/login
-  const response = await api.post("/login", data);
+  const response = await api.post("/auth/login", data);
   return response.data;
 };

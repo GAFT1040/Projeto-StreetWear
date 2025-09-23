@@ -43,7 +43,7 @@ const ProductsCard: React.FC<Product> = (props) => {
         _hover={{ transform: "scale(1.1)" }}
       >
         <Image
-          src={props.link}
+          src={props.foto}
           alt={props.name}
           w="auto"
           h="500px"

@@ -89,7 +89,7 @@ export default function Categories() {
               onClick={() => router.push(`/categories/${category.id}`)}
               color="white"
             >
-              {category.category_name}
+              {category.name}
             </Button>
           ))}
         </Box>
