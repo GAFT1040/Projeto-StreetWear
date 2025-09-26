@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CreateCartProducts";
+import { createPedidoService } from "@/services/cart.service";
 import {
   Button,
   CloseButton,
@@ -31,11 +32,22 @@ const Cart = () => {
 
   const [showPay, setShowPay] = useState(false);
 
-  const buy = () => {
+  const buy = async () => {
     if (cart.length === 0 || !isLoged) {
       toast.error("Você não pode finalizar esta compra");
     } else {
-      window.location.href = "/pay";
+
+      const produtos = cart.map(item => ({
+        produto: item.id,
+        acrescimo: 0,
+        desconto: 0,
+        quantidade: item.quantity,
+        valor_unitario: item.value,
+      }))
+
+      const url = await createPedidoService(produtos);
+
+      window.location.href = url;
     }
   };
 
