@@ -21,6 +21,7 @@ import { LightMode } from "../ui/color-mode";
 import DeletButton from "../DeletButtom";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
+import { updateUserService } from "@/services/user.service";
 
 const Perfil = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -54,20 +55,23 @@ const Perfil = () => {
   }, []);
 
   const handleUpdate = async () => {
+
+    if (!user) {
+      toast.error("Usuário não encontrado.");
+      return;
+    }
+
     if (password && password !== confirmPassword) {
       toast.error("Senhas não coincidem.");
       return;
     }
 
     try {
-      await api.patch(`/users/${user?.id}`, {
-        name,
-        email,
-        ...(password ? { password } : {}),
-      });
+      await updateUserService(user.id, { name, email, password });
 
       toast.success("Perfil atualizado com sucesso!");
     } catch (err) {
+      console.error(err);
       toast.error("Erro ao atualizar perfil.");
     }
   };

@@ -56,16 +56,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const loginUser = async (data: LoginUserData) => {
     try {
       const response = await loginUserService(data);
-      console.log(response);
       localStorage.setItem("@token", JSON.stringify(response.accessToken));
       
       localStorage.setItem("@userId", JSON.stringify(response.user.id));
       setIsLoged(true);
       router.push("/");
       toast.success("Login bem sucedido!");
-      console.log(response);
     } catch (error: any) {
-      toast.error(error.response.data);
+      toast.error("Erro ao fazer login.");
       console.log(error);
     }
   };
