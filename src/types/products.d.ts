@@ -3,7 +3,7 @@ export interface Product {
   value: number;
   id: number;
   mark: string;
-  link: string;
+  foto: string;
   color: string;
-  type: string;
+  categoria: string;
 }

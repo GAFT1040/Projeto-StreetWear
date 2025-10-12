@@ -35,13 +35,15 @@ export default function RootLayout({
     >
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ToastContainer />
-        <ProductFilterProvider>
-          <CartProvider>
-            <Provider>
-              <AuthProvider>{children}</AuthProvider>
-            </Provider>
-          </CartProvider>
-        </ProductFilterProvider>
+        <AuthProvider>
+          <ProductFilterProvider>
+            <CartProvider>
+              <Provider>
+                {children}
+              </Provider>
+            </CartProvider>
+          </ProductFilterProvider>
+        </AuthProvider>
       </body>
     </html>
   );

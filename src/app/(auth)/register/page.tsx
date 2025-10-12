@@ -35,7 +35,7 @@ export default function Register() {
   });
 
   const onSubmit = ({ email, password, name }: UserFormData) => {
-    registerUser({ email, password, name });
+    registerUser({ email, password, name, role: "USER" });
 
     console.log(email);
   };
